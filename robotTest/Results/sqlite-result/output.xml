@@ -1,0 +1,1350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20191121 23:24:46.848" generator="Robot 3.1.2 (Python 3.5.1 on win32)">
+<suite id="s1" source="D:\DemoProject\RobotFramework_E2E\robotTest\tests" name="Tests">
+<suite id="s1-s1" source="D:\DemoProject\RobotFramework_E2E\robotTest\tests\Sqlite3_test.robot" name="Sqlite3 test">
+<test id="s1-s1-t1" name="Remove old DB if exists">
+<kw library="BuiltIn" name="Run Keyword And Ignore Error">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>File Should Not Exist</arg>
+<arg>./${DBName}.db</arg>
+</arguments>
+<assign>
+<var>${Status}</var>
+<var>${value}</var>
+</assign>
+<kw library="OperatingSystem" name="File Should Not Exist">
+<doc>Fails if the given path points to an existing file.</doc>
+<arguments>
+<arg>./${DBName}.db</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.915" level="FAIL">File 'D:\DemoProject\RobotFramework_E2E\robotTest\my_db_test.db' exists.</msg>
+<status starttime="20191121 23:24:46.914" status="FAIL" endtime="20191121 23:24:46.915"></status>
+</kw>
+<msg timestamp="20191121 23:24:46.915" level="INFO">${Status} = FAIL</msg>
+<msg timestamp="20191121 23:24:46.915" level="INFO">${value} = File 'D:\DemoProject\RobotFramework_E2E\robotTest\my_db_test.db' exists.</msg>
+<status starttime="20191121 23:24:46.914" status="PASS" endtime="20191121 23:24:46.915"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${Status}" == "FAIL"</arg>
+<arg>Run Keyword And Ignore Error</arg>
+<arg>Remove File</arg>
+<arg>./${DBName}.db</arg>
+</arguments>
+<kw library="BuiltIn" name="Run Keyword And Ignore Error">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Remove File</arg>
+<arg>./${DBName}.db</arg>
+</arguments>
+<kw library="OperatingSystem" name="Remove File">
+<doc>Removes a file with the given path.</doc>
+<arguments>
+<arg>./${DBName}.db</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.917" level="INFO" html="yes">Removed file '&lt;a href="file://D:\DemoProject\RobotFramework_E2E\robotTest\my_db_test.db"&gt;D:\DemoProject\RobotFramework_E2E\robotTest\my_db_test.db&lt;/a&gt;'.</msg>
+<status starttime="20191121 23:24:46.916" status="PASS" endtime="20191121 23:24:46.917"></status>
+</kw>
+<status starttime="20191121 23:24:46.916" status="PASS" endtime="20191121 23:24:46.917"></status>
+</kw>
+<status starttime="20191121 23:24:46.916" status="PASS" endtime="20191121 23:24:46.917"></status>
+</kw>
+<kw library="OperatingSystem" name="File Should Not Exist">
+<doc>Fails if the given path points to an existing file.</doc>
+<arguments>
+<arg>./${DBName}.db</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.918" level="INFO" html="yes">File '&lt;a href="file://D:\DemoProject\RobotFramework_E2E\robotTest\my_db_test.db"&gt;D:\DemoProject\RobotFramework_E2E\robotTest\my_db_test.db&lt;/a&gt;' does not exist.</msg>
+<status starttime="20191121 23:24:46.918" status="PASS" endtime="20191121 23:24:46.918"></status>
+</kw>
+<kw library="BuiltIn" name="Comment">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Sleep</arg>
+<arg>1s</arg>
+</arguments>
+<status starttime="20191121 23:24:46.919" status="PASS" endtime="20191121 23:24:46.919"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.913" critical="yes" status="PASS" endtime="20191121 23:24:46.920"></status>
+</test>
+<test id="s1-s1-t2" name="Connect to SQLiteDB">
+<kw library="BuiltIn" name="Comment">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Connect To Database Using Custom Params sqlite3 database='D:\DemoProject\RobotFramework_E2E\robotTest\Resources\DB\my_db_test.db'</arg>
+</arguments>
+<status starttime="20191121 23:24:46.922" status="PASS" endtime="20191121 23:24:46.922"></status>
+</kw>
+<kw library="DatabaseLibrary" name="Connect To Database Using Custom Params">
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using the map string `db_custom_param_string`.</doc>
+<arguments>
+<arg>sqlite3</arg>
+<arg>database="./${DBName}.db", isolation_level=None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.928" level="INFO">Executing : Connect To Database Using Custom Params : sqlite3.connect(db_api_2.connect(database="./my_db_test.db", isolation_level=None)) </msg>
+<status starttime="20191121 23:24:46.922" status="PASS" endtime="20191121 23:24:46.928"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.921" critical="yes" status="PASS" endtime="20191121 23:24:46.929"></status>
+</test>
+<test id="s1-s1-t3" name="Create person table">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>CREATE TABLE person (id integer unique,first_name varchar,last_name varchar);</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:46.931" level="INFO">Executing : Execute SQL String  |  CREATE TABLE person (id integer unique,first_name varchar,last_name varchar); </msg>
+<msg timestamp="20191121 23:24:46.945" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:46.931" status="PASS" endtime="20191121 23:24:46.945"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.945" level="INFO">None</msg>
+<status starttime="20191121 23:24:46.945" status="PASS" endtime="20191121 23:24:46.946"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.946" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:46.946" status="PASS" endtime="20191121 23:24:46.946"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.931" critical="yes" status="PASS" endtime="20191121 23:24:46.946"></status>
+</test>
+<test id="s1-s1-t4" name="Execute SQL Script - Insert Data person table">
+<kw library="DatabaseLibrary" name="Execute Sql Script">
+<doc>Executes the content of the `sqlScriptFileName` as SQL commands. Useful for setting the database to a known
+state before running your tests, or clearing out your test data after running each a test. Set optional input
+`sansTran` to True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>${DBlocation}</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:46.949" level="INFO">Executing : Execute SQL Script  |  D:/DemoProject/RobotFramework_E2E/robotTest/Resources/DB/my_db_test_insertData.sql </msg>
+<msg timestamp="20191121 23:24:46.959" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:46.948" status="PASS" endtime="20191121 23:24:46.959"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.960" level="INFO">None</msg>
+<status starttime="20191121 23:24:46.959" status="PASS" endtime="20191121 23:24:46.960"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.961" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:46.960" status="PASS" endtime="20191121 23:24:46.961"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.947" critical="yes" status="PASS" endtime="20191121 23:24:46.961"></status>
+</test>
+<test id="s1-s1-t5" name="Execute SQL String - Create Table">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>create table foobar (id integer primary key, firstname varchar unique)</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:46.963" level="INFO">Executing : Execute SQL String  |  create table foobar (id integer primary key, firstname varchar unique) </msg>
+<msg timestamp="20191121 23:24:46.968" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:46.963" status="PASS" endtime="20191121 23:24:46.969"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.969" level="INFO">None</msg>
+<status starttime="20191121 23:24:46.969" status="PASS" endtime="20191121 23:24:46.969"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.970" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:46.969" status="PASS" endtime="20191121 23:24:46.970"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.963" critical="yes" status="PASS" endtime="20191121 23:24:46.970"></status>
+</test>
+<test id="s1-s1-t6" name="Check If Exists In DB - Atul Singh">
+<kw library="DatabaseLibrary" name="Check If Exists In Database">
+<doc>Check if any row would be returned by given the input `selectStatement`. If there are no results, then this will
+throw an AssertionError. Set optional input `sansTran` to True to run command without an explicit transaction
+commit or rollback.</doc>
+<arguments>
+<arg>SELECT id FROM person WHERE first_name = 'Atul';</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.971" level="INFO">Executing : Check If Exists In Database  |  SELECT id FROM person WHERE first_name = 'Atul'; </msg>
+<msg timestamp="20191121 23:24:46.971" level="INFO">Executing : Query  |  SELECT id FROM person WHERE first_name = 'Atul'; </msg>
+<status starttime="20191121 23:24:46.971" status="PASS" endtime="20191121 23:24:46.971"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.971" critical="yes" status="PASS" endtime="20191121 23:24:46.972"></status>
+</test>
+<test id="s1-s1-t7" name="Check If Not Exists In DB - Joe">
+<kw library="DatabaseLibrary" name="Check If Not Exists In Database">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>SELECT id FROM person WHERE first_name = 'Joe';</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.973" level="INFO">Executing : Check If Not Exists In Database  |  SELECT id FROM person WHERE first_name = 'Joe'; </msg>
+<msg timestamp="20191121 23:24:46.973" level="INFO">Executing : Query  |  SELECT id FROM person WHERE first_name = 'Joe'; </msg>
+<status starttime="20191121 23:24:46.973" status="PASS" endtime="20191121 23:24:46.973"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.972" critical="yes" status="PASS" endtime="20191121 23:24:46.973"></status>
+</test>
+<test id="s1-s1-t8" name="Table Must Exist - person">
+<kw library="DatabaseLibrary" name="Table Must Exist">
+<doc>Check if the table given exists in the database. Set optional input `sansTran` to True to run command without an
+explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>person</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.975" level="INFO">Executing : Table Must Exist  |  person </msg>
+<msg timestamp="20191121 23:24:46.975" level="INFO">Executing : Row Count  |  SELECT name FROM sqlite_master WHERE type='table' AND name='person' COLLATE NOCASE </msg>
+<status starttime="20191121 23:24:46.975" status="PASS" endtime="20191121 23:24:46.975"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.974" critical="yes" status="PASS" endtime="20191121 23:24:46.975"></status>
+</test>
+<test id="s1-s1-t9" name="Verify Row Count is 0">
+<kw library="DatabaseLibrary" name="Row Count Is 0">
+<doc>Check if any rows are returned from the submitted `selectStatement`. If there are, then this will throw an
+AssertionError. Set optional input `sansTran` to True to run command without an explicit transaction commit or
+rollback.</doc>
+<arguments>
+<arg>SELECT * FROM person WHERE first_name = 'NotHere';</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.977" level="INFO">Executing : Row Count Is 0  |  SELECT * FROM person WHERE first_name = 'NotHere'; </msg>
+<msg timestamp="20191121 23:24:46.977" level="INFO">Executing : Row Count  |  SELECT * FROM person WHERE first_name = 'NotHere'; </msg>
+<status starttime="20191121 23:24:46.976" status="PASS" endtime="20191121 23:24:46.977"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.976" critical="yes" status="PASS" endtime="20191121 23:24:46.977"></status>
+</test>
+<test id="s1-s1-t10" name="Verify Row Count is Equal to X">
+<kw library="DatabaseLibrary" name="Row Count Is Equal To X">
+<doc>Check if the number of rows returned from `selectStatement` is equal to the value submitted. If not, then this
+will throw an AssertionError. Set optional input `sansTran` to True to run command without an explicit
+transaction commit or rollback.</doc>
+<arguments>
+<arg>SELECT id FROM person;</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.980" level="INFO">Executing : Row Count Is Equal To X  |  SELECT id FROM person;  |  2 </msg>
+<msg timestamp="20191121 23:24:46.980" level="INFO">Executing : Row Count  |  SELECT id FROM person; </msg>
+<status starttime="20191121 23:24:46.979" status="PASS" endtime="20191121 23:24:46.980"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.979" critical="yes" status="PASS" endtime="20191121 23:24:46.980"></status>
+</test>
+<test id="s1-s1-t11" name="Verify Row Count is Less Than X">
+<kw library="DatabaseLibrary" name="Row Count Is Less Than X">
+<doc>Check if the number of rows returned from `selectStatement` is less than the value submitted. If not, then this
+will throw an AssertionError. Set optional input `sansTran` to True to run command without an explicit
+transaction commit or rollback.</doc>
+<arguments>
+<arg>SELECT id FROM person;</arg>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.982" level="INFO">Executing : Row Count Is Less Than X  |  SELECT id FROM person;  |  3 </msg>
+<msg timestamp="20191121 23:24:46.982" level="INFO">Executing : Row Count  |  SELECT id FROM person; </msg>
+<status starttime="20191121 23:24:46.982" status="PASS" endtime="20191121 23:24:46.982"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.981" critical="yes" status="PASS" endtime="20191121 23:24:46.983"></status>
+</test>
+<test id="s1-s1-t12" name="Verify Row Count is Greater Than X">
+<kw library="DatabaseLibrary" name="Row Count Is Greater Than X">
+<doc>Check if the number of rows returned from `selectStatement` is greater than the value submitted. If not, then
+this will throw an AssertionError. Set optional input `sansTran` to True to run command without an explicit
+transaction commit or rollback.</doc>
+<arguments>
+<arg>SELECT * FROM person;</arg>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.985" level="INFO">Executing : Row Count Is Greater Than X  |  SELECT * FROM person;  |  1 </msg>
+<msg timestamp="20191121 23:24:46.985" level="INFO">Executing : Row Count  |  SELECT * FROM person; </msg>
+<status starttime="20191121 23:24:46.984" status="PASS" endtime="20191121 23:24:46.985"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.984" critical="yes" status="PASS" endtime="20191121 23:24:46.985"></status>
+</test>
+<test id="s1-s1-t13" name="Retrieve Row Count">
+<kw library="DatabaseLibrary" name="Row Count">
+<doc>Uses the input `selectStatement` to query the database and returns the number of rows from the query. Set
+optional input `sansTran` to True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>SELECT id FROM person;</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:46.987" level="INFO">Executing : Row Count  |  SELECT id FROM person; </msg>
+<msg timestamp="20191121 23:24:46.987" level="INFO">${output} = 2</msg>
+<status starttime="20191121 23:24:46.987" status="PASS" endtime="20191121 23:24:46.987"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.988" level="INFO">2</msg>
+<status starttime="20191121 23:24:46.987" status="PASS" endtime="20191121 23:24:46.988"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.988" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:46.988" status="PASS" endtime="20191121 23:24:46.988"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.986" critical="yes" status="PASS" endtime="20191121 23:24:46.989"></status>
+</test>
+<test id="s1-s1-t14" name="Retrieve records from person table">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>SELECT * FROM person;</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:46.990" level="INFO">Executing : Execute SQL String  |  SELECT * FROM person; </msg>
+<msg timestamp="20191121 23:24:46.990" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:46.990" status="PASS" endtime="20191121 23:24:46.990"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.991" level="INFO">None</msg>
+<status starttime="20191121 23:24:46.991" status="PASS" endtime="20191121 23:24:46.991"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.991" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:46.991" status="PASS" endtime="20191121 23:24:46.991"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.989" critical="yes" status="PASS" endtime="20191121 23:24:46.992"></status>
+</test>
+<test id="s1-s1-t15" name="Verify person Description">
+<kw library="BuiltIn" name="Comment">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Query db for table column descriptions</arg>
+</arguments>
+<status starttime="20191121 23:24:46.993" status="PASS" endtime="20191121 23:24:46.994"></status>
+</kw>
+<kw library="DatabaseLibrary" name="Description">
+<doc>Uses the input `selectStatement` to query a table in the db which will be used to determine the description. Set
+optional input `sansTran` to True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>SELECT * FROM person LIMIT 1;</arg>
+</arguments>
+<assign>
+<var>@{queryResults}</var>
+</assign>
+<msg timestamp="20191121 23:24:46.994" level="INFO">Executing : Description  |  SELECT * FROM person LIMIT 1; </msg>
+<msg timestamp="20191121 23:24:46.995" level="INFO">@{queryResults} = [ ('id', None, None, None, None, None, None) | ('first_name', None, None, None, None, None, None) | ('last_name', None, None, None, None, None, None) ]</msg>
+<status starttime="20191121 23:24:46.994" status="PASS" endtime="20191121 23:24:46.995"></status>
+</kw>
+<kw library="BuiltIn" name="Log Many">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>@{queryResults}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.995" level="INFO">('id', None, None, None, None, None, None)</msg>
+<msg timestamp="20191121 23:24:46.995" level="INFO">('first_name', None, None, None, None, None, None)</msg>
+<msg timestamp="20191121 23:24:46.995" level="INFO">('last_name', None, None, None, None, None, None)</msg>
+<status starttime="20191121 23:24:46.995" status="PASS" endtime="20191121 23:24:46.996"></status>
+</kw>
+<kw library="BuiltIn" name="Set Variable">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${queryResults[0]}</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:46.996" level="INFO">${output} = ('id', None, None, None, None, None, None)</msg>
+<status starttime="20191121 23:24:46.996" status="PASS" endtime="20191121 23:24:46.996"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>('id', None, None, None, None, None, None)</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.997" level="INFO">Argument types are:
+&lt;class 'tuple'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:46.996" status="PASS" endtime="20191121 23:24:46.997"></status>
+</kw>
+<kw library="BuiltIn" name="Set Variable">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${queryResults[1]}</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:46.997" level="INFO">${output} = ('first_name', None, None, None, None, None, None)</msg>
+<status starttime="20191121 23:24:46.997" status="PASS" endtime="20191121 23:24:46.997"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>('first_name', None, None, None, None, None, None)</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.998" level="INFO">Argument types are:
+&lt;class 'tuple'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:46.998" status="PASS" endtime="20191121 23:24:46.998"></status>
+</kw>
+<kw library="BuiltIn" name="Set Variable">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${queryResults[2]}</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:46.998" level="INFO">${output} = ('last_name', None, None, None, None, None, None)</msg>
+<status starttime="20191121 23:24:46.998" status="PASS" endtime="20191121 23:24:46.998"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>('last_name', None, None, None, None, None, None)</arg>
+</arguments>
+<msg timestamp="20191121 23:24:46.999" level="INFO">Argument types are:
+&lt;class 'tuple'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:46.999" status="PASS" endtime="20191121 23:24:46.999"></status>
+</kw>
+<kw library="BuiltIn" name="Get Length">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${queryResults}</arg>
+</arguments>
+<assign>
+<var>${NumColumns}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.000" level="INFO">Length is 3</msg>
+<msg timestamp="20191121 23:24:47.000" level="INFO">${NumColumns} = 3</msg>
+<status starttime="20191121 23:24:46.999" status="PASS" endtime="20191121 23:24:47.000"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Integers">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${NumColumns}</arg>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.000" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.000" status="PASS" endtime="20191121 23:24:47.000"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:46.993" critical="yes" status="PASS" endtime="20191121 23:24:47.001"></status>
+</test>
+<test id="s1-s1-t16" name="Verify foobar Description">
+<kw library="BuiltIn" name="Comment">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Query db for table column descriptions</arg>
+</arguments>
+<status starttime="20191121 23:24:47.003" status="PASS" endtime="20191121 23:24:47.004"></status>
+</kw>
+<kw library="DatabaseLibrary" name="Description">
+<doc>Uses the input `selectStatement` to query a table in the db which will be used to determine the description. Set
+optional input `sansTran` to True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>SELECT * FROM foobar LIMIT 1;</arg>
+</arguments>
+<assign>
+<var>@{queryResults}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.004" level="INFO">Executing : Description  |  SELECT * FROM foobar LIMIT 1; </msg>
+<msg timestamp="20191121 23:24:47.004" level="INFO">@{queryResults} = [ ('id', None, None, None, None, None, None) | ('firstname', None, None, None, None, None, None) ]</msg>
+<status starttime="20191121 23:24:47.004" status="PASS" endtime="20191121 23:24:47.004"></status>
+</kw>
+<kw library="BuiltIn" name="Log Many">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>@{queryResults}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.005" level="INFO">('id', None, None, None, None, None, None)</msg>
+<msg timestamp="20191121 23:24:47.005" level="INFO">('firstname', None, None, None, None, None, None)</msg>
+<status starttime="20191121 23:24:47.005" status="PASS" endtime="20191121 23:24:47.005"></status>
+</kw>
+<kw library="BuiltIn" name="Set Variable">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${queryResults[0]}</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.006" level="INFO">${output} = ('id', None, None, None, None, None, None)</msg>
+<status starttime="20191121 23:24:47.006" status="PASS" endtime="20191121 23:24:47.006"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>('id', None, None, None, None, None, None)</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.006" level="INFO">Argument types are:
+&lt;class 'tuple'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.006" status="PASS" endtime="20191121 23:24:47.007"></status>
+</kw>
+<kw library="BuiltIn" name="Set Variable">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${queryResults[1]}</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.007" level="INFO">${output} = ('firstname', None, None, None, None, None, None)</msg>
+<status starttime="20191121 23:24:47.007" status="PASS" endtime="20191121 23:24:47.007"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>('firstname', None, None, None, None, None, None)</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.008" level="INFO">Argument types are:
+&lt;class 'tuple'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.008" status="PASS" endtime="20191121 23:24:47.008"></status>
+</kw>
+<kw library="BuiltIn" name="Get Length">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${queryResults}</arg>
+</arguments>
+<assign>
+<var>${NumColumns}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.008" level="INFO">Length is 2</msg>
+<msg timestamp="20191121 23:24:47.009" level="INFO">${NumColumns} = 2</msg>
+<status starttime="20191121 23:24:47.008" status="PASS" endtime="20191121 23:24:47.009"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Integers">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${NumColumns}</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.009" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.009" status="PASS" endtime="20191121 23:24:47.009"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.003" critical="yes" status="PASS" endtime="20191121 23:24:47.011"></status>
+</test>
+<test id="s1-s1-t17" name="Verify Query - Row Count person table">
+<kw library="DatabaseLibrary" name="Query">
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<arguments>
+<arg>SELECT COUNT(*) FROM person;</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.014" level="INFO">Executing : Query  |  SELECT COUNT(*) FROM person; </msg>
+<msg timestamp="20191121 23:24:47.014" level="INFO">${output} = [(2,)]</msg>
+<status starttime="20191121 23:24:47.013" status="PASS" endtime="20191121 23:24:47.014"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.015" level="INFO">[(2,)]</msg>
+<status starttime="20191121 23:24:47.014" status="PASS" endtime="20191121 23:24:47.015"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>[(2,)]</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.015" level="INFO">Argument types are:
+&lt;class 'list'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.015" status="PASS" endtime="20191121 23:24:47.016"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.013" critical="yes" status="PASS" endtime="20191121 23:24:47.016"></status>
+</test>
+<test id="s1-s1-t18" name="Verify Query - Row Count foobar table">
+<kw library="DatabaseLibrary" name="Query">
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<arguments>
+<arg>SELECT COUNT(*) FROM foobar;</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.018" level="INFO">Executing : Query  |  SELECT COUNT(*) FROM foobar; </msg>
+<msg timestamp="20191121 23:24:47.018" level="INFO">${output} = [(0,)]</msg>
+<status starttime="20191121 23:24:47.018" status="PASS" endtime="20191121 23:24:47.018"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.020" level="INFO">[(0,)]</msg>
+<status starttime="20191121 23:24:47.019" status="PASS" endtime="20191121 23:24:47.020"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>[(0,)]</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.020" level="INFO">Argument types are:
+&lt;class 'list'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.020" status="PASS" endtime="20191121 23:24:47.020"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.017" critical="yes" status="PASS" endtime="20191121 23:24:47.021"></status>
+</test>
+<test id="s1-s1-t19" name="Verify Query - Get results as a list of dictionaries">
+<kw library="DatabaseLibrary" name="Query">
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<arguments>
+<arg>SELECT * FROM person;</arg>
+<arg>True</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.023" level="INFO">Executing : Query  |  SELECT * FROM person; </msg>
+<msg timestamp="20191121 23:24:47.023" level="INFO">${output} = [{'id': 1, 'first_name': 'Atul', 'last_name': 'Singh'}, {'id': 2, 'first_name': 'Jerry', 'last_name': 'Schneider'}]</msg>
+<status starttime="20191121 23:24:47.022" status="PASS" endtime="20191121 23:24:47.023"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.024" level="INFO">[{'id': 1, 'first_name': 'Atul', 'last_name': 'Singh'}, {'id': 2, 'first_name': 'Jerry', 'last_name': 'Schneider'}]</msg>
+<status starttime="20191121 23:24:47.023" status="PASS" endtime="20191121 23:24:47.024"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>&amp;{output[0]}[first_name]</arg>
+<arg>Atul</arg>
+</arguments>
+<status starttime="20191121 23:24:47.024" status="PASS" endtime="20191121 23:24:47.025"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>&amp;{output[1]}[first_name]</arg>
+<arg>Jerry</arg>
+</arguments>
+<status starttime="20191121 23:24:47.025" status="PASS" endtime="20191121 23:24:47.026"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.022" critical="yes" status="PASS" endtime="20191121 23:24:47.026"></status>
+</test>
+<test id="s1-s1-t20" name="Verify Execute SQL String - Row Count person table">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>SELECT COUNT(*) FROM person;</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.029" level="INFO">Executing : Execute SQL String  |  SELECT COUNT(*) FROM person; </msg>
+<msg timestamp="20191121 23:24:47.029" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:47.028" status="PASS" endtime="20191121 23:24:47.029"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.030" level="INFO">None</msg>
+<status starttime="20191121 23:24:47.029" status="PASS" endtime="20191121 23:24:47.030"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.030" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.030" status="PASS" endtime="20191121 23:24:47.030"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.027" critical="yes" status="PASS" endtime="20191121 23:24:47.031"></status>
+</test>
+<test id="s1-s1-t21" name="Verify Execute SQL String - Row Count foobar table">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>SELECT COUNT(*) FROM foobar;</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.032" level="INFO">Executing : Execute SQL String  |  SELECT COUNT(*) FROM foobar; </msg>
+<msg timestamp="20191121 23:24:47.033" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:47.032" status="PASS" endtime="20191121 23:24:47.033"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.033" level="INFO">None</msg>
+<status starttime="20191121 23:24:47.033" status="PASS" endtime="20191121 23:24:47.033"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.034" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.034" status="PASS" endtime="20191121 23:24:47.034"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.031" critical="yes" status="PASS" endtime="20191121 23:24:47.034"></status>
+</test>
+<test id="s1-s1-t22" name="Insert Data Into Table foobar">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>INSERT INTO foobar VALUES(1,'Jerry');</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.036" level="INFO">Executing : Execute SQL String  |  INSERT INTO foobar VALUES(1,'Jerry'); </msg>
+<msg timestamp="20191121 23:24:47.043" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:47.036" status="PASS" endtime="20191121 23:24:47.043"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.044" level="INFO">None</msg>
+<status starttime="20191121 23:24:47.043" status="PASS" endtime="20191121 23:24:47.044"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.045" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.045" status="PASS" endtime="20191121 23:24:47.046"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.036" critical="yes" status="PASS" endtime="20191121 23:24:47.046"></status>
+</test>
+<test id="s1-s1-t23" name="Verify Query - Row Count foobar table 1 row">
+<kw library="DatabaseLibrary" name="Query">
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<arguments>
+<arg>SELECT COUNT(*) FROM foobar;</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.048" level="INFO">Executing : Query  |  SELECT COUNT(*) FROM foobar; </msg>
+<msg timestamp="20191121 23:24:47.048" level="INFO">${output} = [(1,)]</msg>
+<status starttime="20191121 23:24:47.048" status="PASS" endtime="20191121 23:24:47.048"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.049" level="INFO">[(1,)]</msg>
+<status starttime="20191121 23:24:47.049" status="PASS" endtime="20191121 23:24:47.049"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>[(1,)]</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.052" level="INFO">Argument types are:
+&lt;class 'list'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.051" status="PASS" endtime="20191121 23:24:47.052"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.047" critical="yes" status="PASS" endtime="20191121 23:24:47.052"></status>
+</test>
+<test id="s1-s1-t24" name="Verify Delete All Rows From Table - foobar">
+<kw library="DatabaseLibrary" name="Delete All Rows From Table">
+<doc>Delete all the rows within a given table. Set optional input `sansTran` to True to run command without an
+explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>foobar</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.054" level="INFO">Executing : Delete All Rows From Table  |  DELETE FROM foobar; </msg>
+<status starttime="20191121 23:24:47.054" status="PASS" endtime="20191121 23:24:47.059"></status>
+</kw>
+<kw library="BuiltIn" name="Comment">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Sleep</arg>
+<arg>2s</arg>
+</arguments>
+<status starttime="20191121 23:24:47.059" status="PASS" endtime="20191121 23:24:47.060"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.053" critical="yes" status="PASS" endtime="20191121 23:24:47.060"></status>
+</test>
+<test id="s1-s1-t25" name="Verify Query - Row Count foobar table 0 row">
+<kw library="DatabaseLibrary" name="Row Count Is 0">
+<doc>Check if any rows are returned from the submitted `selectStatement`. If there are, then this will throw an
+AssertionError. Set optional input `sansTran` to True to run command without an explicit transaction commit or
+rollback.</doc>
+<arguments>
+<arg>SELECT * FROM foobar;</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.062" level="INFO">Executing : Row Count Is 0  |  SELECT * FROM foobar; </msg>
+<msg timestamp="20191121 23:24:47.062" level="INFO">Executing : Row Count  |  SELECT * FROM foobar; </msg>
+<status starttime="20191121 23:24:47.061" status="PASS" endtime="20191121 23:24:47.062"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.061" critical="yes" status="PASS" endtime="20191121 23:24:47.062"></status>
+</test>
+<test id="s1-s1-t26" name="Begin first transaction">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>SAVEPOINT first</arg>
+<arg>True</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.064" level="INFO">Executing : Execute SQL String  |  SAVEPOINT first </msg>
+<msg timestamp="20191121 23:24:47.064" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:47.063" status="PASS" endtime="20191121 23:24:47.064"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.065" level="INFO">None</msg>
+<status starttime="20191121 23:24:47.064" status="PASS" endtime="20191121 23:24:47.065"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.065" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.065" status="PASS" endtime="20191121 23:24:47.065"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.063" critical="yes" status="PASS" endtime="20191121 23:24:47.065"></status>
+</test>
+<test id="s1-s1-t27" name="Add person in first transaction">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>INSERT INTO person VALUES(101,'Bilbo','Baggins');</arg>
+<arg>True</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.067" level="INFO">Executing : Execute SQL String  |  INSERT INTO person VALUES(101,'Bilbo','Baggins'); </msg>
+<msg timestamp="20191121 23:24:47.068" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:47.067" status="PASS" endtime="20191121 23:24:47.068"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.068" level="INFO">None</msg>
+<status starttime="20191121 23:24:47.068" status="PASS" endtime="20191121 23:24:47.068"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.069" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.069" status="PASS" endtime="20191121 23:24:47.069"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.066" critical="yes" status="PASS" endtime="20191121 23:24:47.069"></status>
+</test>
+<test id="s1-s1-t28" name="Verify person in first transaction">
+<kw library="DatabaseLibrary" name="Row Count Is Equal To X">
+<doc>Check if the number of rows returned from `selectStatement` is equal to the value submitted. If not, then this
+will throw an AssertionError. Set optional input `sansTran` to True to run command without an explicit
+transaction commit or rollback.</doc>
+<arguments>
+<arg>SELECT * FROM person WHERE last_name = 'Baggins';</arg>
+<arg>1</arg>
+<arg>True</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.071" level="INFO">Executing : Row Count Is Equal To X  |  SELECT * FROM person WHERE last_name = 'Baggins';  |  1 </msg>
+<msg timestamp="20191121 23:24:47.071" level="INFO">Executing : Row Count  |  SELECT * FROM person WHERE last_name = 'Baggins'; </msg>
+<status starttime="20191121 23:24:47.070" status="PASS" endtime="20191121 23:24:47.071"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.070" critical="yes" status="PASS" endtime="20191121 23:24:47.071"></status>
+</test>
+<test id="s1-s1-t29" name="Begin second transaction">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>SAVEPOINT second</arg>
+<arg>True</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.072" level="INFO">Executing : Execute SQL String  |  SAVEPOINT second </msg>
+<msg timestamp="20191121 23:24:47.072" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:47.072" status="PASS" endtime="20191121 23:24:47.073"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.073" level="INFO">None</msg>
+<status starttime="20191121 23:24:47.073" status="PASS" endtime="20191121 23:24:47.073"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.074" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.074" status="PASS" endtime="20191121 23:24:47.074"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.072" critical="yes" status="PASS" endtime="20191121 23:24:47.074"></status>
+</test>
+<test id="s1-s1-t30" name="Add person in second transaction">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>INSERT INTO person VALUES(102,'Frodo','Baggins');</arg>
+<arg>True</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.076" level="INFO">Executing : Execute SQL String  |  INSERT INTO person VALUES(102,'Frodo','Baggins'); </msg>
+<msg timestamp="20191121 23:24:47.077" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:47.075" status="PASS" endtime="20191121 23:24:47.077"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.078" level="INFO">None</msg>
+<status starttime="20191121 23:24:47.078" status="PASS" endtime="20191121 23:24:47.078"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.078" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.078" status="PASS" endtime="20191121 23:24:47.078"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.075" critical="yes" status="PASS" endtime="20191121 23:24:47.079"></status>
+</test>
+<test id="s1-s1-t31" name="Verify persons in first and second transactions">
+<kw library="DatabaseLibrary" name="Row Count Is Equal To X">
+<doc>Check if the number of rows returned from `selectStatement` is equal to the value submitted. If not, then this
+will throw an AssertionError. Set optional input `sansTran` to True to run command without an explicit
+transaction commit or rollback.</doc>
+<arguments>
+<arg>SELECT * FROM person WHERE last_name = 'Baggins';</arg>
+<arg>2</arg>
+<arg>True</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.080" level="INFO">Executing : Row Count Is Equal To X  |  SELECT * FROM person WHERE last_name = 'Baggins';  |  2 </msg>
+<msg timestamp="20191121 23:24:47.080" level="INFO">Executing : Row Count  |  SELECT * FROM person WHERE last_name = 'Baggins'; </msg>
+<status starttime="20191121 23:24:47.080" status="PASS" endtime="20191121 23:24:47.080"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.080" critical="yes" status="PASS" endtime="20191121 23:24:47.081"></status>
+</test>
+<test id="s1-s1-t32" name="Rollback second transaction">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>ROLLBACK TO SAVEPOINT second</arg>
+<arg>True</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.082" level="INFO">Executing : Execute SQL String  |  ROLLBACK TO SAVEPOINT second </msg>
+<msg timestamp="20191121 23:24:47.082" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:47.082" status="PASS" endtime="20191121 23:24:47.082"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.082" level="INFO">None</msg>
+<status starttime="20191121 23:24:47.082" status="PASS" endtime="20191121 23:24:47.082"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.083" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.083" status="PASS" endtime="20191121 23:24:47.083"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.081" critical="yes" status="PASS" endtime="20191121 23:24:47.083"></status>
+</test>
+<test id="s1-s1-t33" name="Verify second transaction rollback">
+<kw library="DatabaseLibrary" name="Row Count Is Equal To X">
+<doc>Check if the number of rows returned from `selectStatement` is equal to the value submitted. If not, then this
+will throw an AssertionError. Set optional input `sansTran` to True to run command without an explicit
+transaction commit or rollback.</doc>
+<arguments>
+<arg>SELECT * FROM person WHERE last_name = 'Baggins';</arg>
+<arg>1</arg>
+<arg>True</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.084" level="INFO">Executing : Row Count Is Equal To X  |  SELECT * FROM person WHERE last_name = 'Baggins';  |  1 </msg>
+<msg timestamp="20191121 23:24:47.084" level="INFO">Executing : Row Count  |  SELECT * FROM person WHERE last_name = 'Baggins'; </msg>
+<status starttime="20191121 23:24:47.084" status="PASS" endtime="20191121 23:24:47.085"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.084" critical="yes" status="PASS" endtime="20191121 23:24:47.085"></status>
+</test>
+<test id="s1-s1-t34" name="Rollback first transaction">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>ROLLBACK TO SAVEPOINT first</arg>
+<arg>True</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.086" level="INFO">Executing : Execute SQL String  |  ROLLBACK TO SAVEPOINT first </msg>
+<msg timestamp="20191121 23:24:47.086" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:47.086" status="PASS" endtime="20191121 23:24:47.086"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.087" level="INFO">None</msg>
+<status starttime="20191121 23:24:47.086" status="PASS" endtime="20191121 23:24:47.087"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.087" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.087" status="PASS" endtime="20191121 23:24:47.087"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.085" critical="yes" status="PASS" endtime="20191121 23:24:47.087"></status>
+</test>
+<test id="s1-s1-t35" name="Verify first transaction rollback">
+<kw library="DatabaseLibrary" name="Row Count Is 0">
+<doc>Check if any rows are returned from the submitted `selectStatement`. If there are, then this will throw an
+AssertionError. Set optional input `sansTran` to True to run command without an explicit transaction commit or
+rollback.</doc>
+<arguments>
+<arg>SELECT * FROM person WHERE last_name = 'Baggins';</arg>
+<arg>True</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.089" level="INFO">Executing : Row Count Is 0  |  SELECT * FROM person WHERE last_name = 'Baggins'; </msg>
+<msg timestamp="20191121 23:24:47.089" level="INFO">Executing : Row Count  |  SELECT * FROM person WHERE last_name = 'Baggins'; </msg>
+<status starttime="20191121 23:24:47.089" status="PASS" endtime="20191121 23:24:47.089"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.088" critical="yes" status="PASS" endtime="20191121 23:24:47.089"></status>
+</test>
+<test id="s1-s1-t36" name="Drop person and foobar tables">
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>DROP TABLE IF EXISTS person;</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.091" level="INFO">Executing : Execute SQL String  |  DROP TABLE IF EXISTS person; </msg>
+<msg timestamp="20191121 23:24:47.097" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:47.091" status="PASS" endtime="20191121 23:24:47.097"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.097" level="INFO">None</msg>
+<status starttime="20191121 23:24:47.097" status="PASS" endtime="20191121 23:24:47.097"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.098" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.097" status="PASS" endtime="20191121 23:24:47.098"></status>
+</kw>
+<kw library="DatabaseLibrary" name="Execute Sql String">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>DROP TABLE IF EXISTS foobar;</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20191121 23:24:47.098" level="INFO">Executing : Execute SQL String  |  DROP TABLE IF EXISTS foobar; </msg>
+<msg timestamp="20191121 23:24:47.103" level="INFO">${output} = None</msg>
+<status starttime="20191121 23:24:47.098" status="PASS" endtime="20191121 23:24:47.103"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.104" level="INFO">None</msg>
+<status starttime="20191121 23:24:47.103" status="PASS" endtime="20191121 23:24:47.104"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>None</arg>
+</arguments>
+<msg timestamp="20191121 23:24:47.104" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status starttime="20191121 23:24:47.104" status="PASS" endtime="20191121 23:24:47.104"></status>
+</kw>
+<tags>
+<tag>sqlite_db</tag>
+</tags>
+<status starttime="20191121 23:24:47.090" critical="yes" status="PASS" endtime="20191121 23:24:47.104"></status>
+</test>
+<doc>Database suite for Sqlite database with multiple examples</doc>
+<status starttime="20191121 23:24:46.881" status="PASS" endtime="20191121 23:24:47.106"></status>
+</suite>
+<status starttime="20191121 23:24:46.850" status="PASS" endtime="20191121 23:24:47.110"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="36" fail="0">Critical Tests</stat>
+<stat pass="36" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="36" fail="0">sqlite_db</stat>
+</tag>
+<suite>
+<stat id="s1" pass="36" name="Tests" fail="0">Tests</stat>
+<stat id="s1-s1" pass="36" name="Sqlite3 test" fail="0">Tests.Sqlite3 test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

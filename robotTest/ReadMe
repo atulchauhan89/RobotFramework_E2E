@@ -1,0 +1,17 @@
+To run perticular test: robot -d results tests/walmart.robot
+                        robot -d results/dialogs tests/dialogs.robot
+                        robot -d results tests/ElseIf.robot
+
+To run all test: robot -d results tests,
+To run all test with tittle: robot -d results -N "Full Regression" tests
+
+To run one tag (current tag) test case: robot -d results -i current tests/walmart.robot
+                                        robot -d results -i search tests/walmart.robot
+
+Run with override variable: robot -d results -v browser:firefox tests/walmart.robot
+                            robot -d results -v browser:firefox -i current tests/walmart.robot
+                            robot -d results -v browser:firefox -v env:prod -i search tests/walmart.robot
+
+Run with report and log title: use -reporttime, -logtime, -c (for critical), -timestamps (create reports, logs with time stamp), --randomize, --loglevel (-L(,
+
+
