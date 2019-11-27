@@ -1,6 +1,6 @@
 # RobotFramework_E2E
 
-This project will demo the use of the testing framework [Robotframework](https://robotframework.org/). 
+This project will demo the use of the testing framework [Robotframework](https://robotframework.org/).
 In particular the [Selenium Library](https://pypi.org/project/robotframework-seleniumlibrary/) is used for UI testing as well as the [Requests Library](https://pypi.org/project/robotframework-requests/) is used for API testing.
 This project also included testcases with Sqlite database.
 
