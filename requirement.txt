@@ -1,0 +1,5 @@
+robotframework >=  3.0.2
+robotframework-databaselibrary >= 1.2.4
+robotframework-requests >=0.6.2
+robotframework-seleniumlibrary >=4.1.0
+selenium >=  3.141.0
