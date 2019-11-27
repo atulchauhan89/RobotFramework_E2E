@@ -36,3 +36,10 @@ Here are a couple of helpful resources when working with the Robotframework.
 - [Selenium Library Keyword Definitions](http://robotframework.org/SeleniumLibrary/SeleniumLibrary.html)
 - [Requests Library Keyword Definitions](http://bulkan.github.io/robotframework-requests/)
 - [Collection of robotframework-request examples](https://github.com/bulkan/robotframework-requests/blob/master/tests/testcase.txt)
+
+
+## Results in Jenkins Pipeline
+1)java -jar jenkins.war
+2) http://localhost:8080/ 
+3) Login with admin and key
+4) Go to the pipeline ->RobotTestJob
