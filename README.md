@@ -39,7 +39,7 @@ Here are a couple of helpful resources when working with the Robotframework.
 
 
 ## Results in Jenkins Pipeline
-1)java -jar jenkins.war
-2) http://localhost:8080/ 
-3) Login with admin and key
-4) Go to the pipeline ->RobotTestJob
+- java -jar jenkins.war
+- http://localhost:8080/ 
+- Login with admin and key
+- Go to the pipeline ->RobotTestJob
