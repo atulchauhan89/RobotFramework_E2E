@@ -1,6 +1,6 @@
 *** Settings ***
-Resource  /Users/sdodia/PycharmProjects/Automation/end-to-end/Resources/BackOffice/PO/BackOffice.Landing.robot
-Resource  /Users/sdodia/PycharmProjects/Automation/end-to-end/Resources/BackOffice/PO/BackOffice.TopNav.robot
+Resource  D:/DemoProject/RobotFramework_E2E/end-to-end/Resources/BackOffice/PO/BackOffice.Landing.robot
+Resource  D:/DemoProject/RobotFramework_E2E/end-to-end/Resources/BackOffice/PO/BackOffice.TopNav.robot
 
 *** Variables ***
 

@@ -1,7 +1,7 @@
 *** Settings ***
-Resource  /Users/sdodia/PycharmProjects/Automation/end-to-end/Resources/FrontOffice/PO/FrontOffice.Landing.robot
-Resource  /Users/sdodia/PycharmProjects/Automation/end-to-end/Resources/FrontOffice/PO/FrontOffice.TopNav.robot
-Resource  /Users/sdodia/PycharmProjects/Automation/end-to-end/Resources/FrontOffice/PO/FrontOffice.Team.robot
+Resource  D:/DemoProject/RobotFramework_E2E/end-to-end/Resources/FrontOffice/PO/FrontOffice.Landing.robot
+Resource  D:/DemoProject/RobotFramework_E2E/end-to-end/Resources/FrontOffice/PO/FrontOffice.TopNav.robot
+Resource  D:/DemoProject/RobotFramework_E2E/end-to-end/Resources/FrontOffice/PO/FrontOffice.Team.robot
 
 *** Variables ***
 

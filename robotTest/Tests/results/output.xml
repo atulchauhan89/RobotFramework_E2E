@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.5.1 on win32)" generated="20191127 18:06:19.650" rpa="false">
+<suite id="s1" source="D:\DemoProject\RobotFramework_E2E\robotTest\Tests\selenium-ui-test.robot" name="Selenium-Ui-Test">
+<test id="s1-t1" name="User Should Fill The Form 1 Successfully">
+<kw type="setup" library="Keywords" name="Initialize">
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${HEADLESS_BROWSER_ENABLED}</arg>
+<arg>Start Headless Browser</arg>
+<arg>ELSE</arg>
+<arg>Open URL in Chrome Browser</arg>
+</arguments>
+<kw library="Keywords" name="Open URL in Chrome Browser">
+<kw library="SeleniumLibrary" name="Open Browser">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg level="INFO" timestamp="20191127 18:06:19.964">Opening browser 'Chrome' to base url 'https://www.ultimateqa.com/filling-out-forms/'.</msg>
+<status starttime="20191127 18:06:19.964" status="PASS" endtime="20191127 18:06:31.327"></status>
+</kw>
+<kw library="SeleniumLibrary" name="Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<status starttime="20191127 18:06:31.327" status="PASS" endtime="20191127 18:06:33.463"></status>
+</kw>
+<kw library="SeleniumLibrary" name="Set Selenium Speed">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5 seconds</arg>
+</arguments>
+<status starttime="20191127 18:06:33.464" status="PASS" endtime="20191127 18:06:33.464"></status>
+</kw>
+<kw library="SeleniumLibrary" name="Title Should Be">
+<doc>Verifies that current page title equals ``title``.</doc>
+<arguments>
+<arg>Filling Out Forms - Ultimate QA</arg>
+</arguments>
+<msg level="INFO" timestamp="20191127 18:06:33.972">Page title is 'Filling Out Forms - Ultimate QA'.</msg>
+<status starttime="20191127 18:06:33.464" status="PASS" endtime="20191127 18:06:33.972"></status>
+</kw>
+<status starttime="20191127 18:06:19.964" status="PASS" endtime="20191127 18:06:33.972"></status>
+</kw>
+<status starttime="20191127 18:06:19.963" status="PASS" endtime="20191127 18:06:33.972"></status>
+</kw>
+<status starttime="20191127 18:06:19.963" status="PASS" endtime="20191127 18:06:33.972"></status>
+</kw>
+<kw library="Keywords" name="GIVEN User fills form 1">
+<kw library="Keywords" name="Input User Name on Form">
+<arguments>
+<arg>${NAME_FIELD}</arg>
+<arg>Some name for left form</arg>
+</arguments>
+<kw library="SeleniumLibrary" name="Input Text">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${NAME_FIELD}</arg>
+<arg>${NAME}</arg>
+</arguments>
+<msg level="INFO" timestamp="20191127 18:06:33.985">Typing text 'Some name for left form' into text field 'css=[name='et_pb_contact_name_0']'.</msg>
+<status starttime="20191127 18:06:33.985" status="PASS" endtime="20191127 18:06:35.831"></status>
+</kw>
+<status starttime="20191127 18:06:33.985" status="PASS" endtime="20191127 18:06:35.831"></status>
+</kw>
+<kw library="Keywords" name="Input Message on Form">
+<arguments>
+<arg>${TEXT_FIELD}</arg>
+<arg>Some text for left form</arg>
+</arguments>
+<kw library="SeleniumLibrary" name="Input Text">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${TEXT_FIELD}</arg>
+<arg>${TEXT}</arg>
+</arguments>
+<msg level="INFO" timestamp="20191127 18:06:35.832">Typing text 'Some text for left form' into text field 'css=[data-form_unique_num='0'] [data-id='message'] [data-required_mark]'.</msg>
+<status starttime="20191127 18:06:35.831" status="PASS" endtime="20191127 18:06:37.774"></status>
+</kw>
+<status starttime="20191127 18:06:35.831" status="PASS" endtime="20191127 18:06:37.774"></status>
+</kw>
+<kw library="SeleniumLibrary" name="Capture Page Screenshot">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg level="INFO" html="yes" timestamp="20191127 18:06:38.749">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-21.png"&gt;&lt;img src="selenium-screenshot-21.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status starttime="20191127 18:06:37.774" status="PASS" endtime="20191127 18:06:38.749"></status>
+</kw>
+<status starttime="20191127 18:06:33.984" status="PASS" endtime="20191127 18:06:38.750"></status>
+</kw>
+<kw library="Keywords" name="WHEN User submits forms 1">
+<kw library="SeleniumLibrary" name="Click Button">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${SUBMIT_BUTTON}</arg>
+</arguments>
+<msg level="INFO" timestamp="20191127 18:06:38.782">Clicking button 'css=#et_pb_contact_form_0 .et_pb_contact_submit.et_pb_button'.</msg>
+<status starttime="20191127 18:06:38.782" status="PASS" endtime="20191127 18:06:41.540"></status>
+</kw>
+<status starttime="20191127 18:06:38.781" status="PASS" endtime="20191127 18:06:41.540"></status>
+</kw>
+<kw library="Keywords" name="THEN Form 1 was submitted successfully">
+<kw library="SeleniumLibrary" name="Wait Until Page Contains">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>Form filled out successfully</arg>
+</arguments>
+<status starttime="20191127 18:06:41.543" status="PASS" endtime="20191127 18:06:44.289"></status>
+</kw>
+<kw library="SeleniumLibrary" name="Capture Page Screenshot">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg level="INFO" html="yes" timestamp="20191127 18:06:45.157">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-22.png"&gt;&lt;img src="selenium-screenshot-22.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status starttime="20191127 18:06:44.289" status="PASS" endtime="20191127 18:06:45.157"></status>
+</kw>
+<status starttime="20191127 18:06:41.543" status="PASS" endtime="20191127 18:06:45.157"></status>
+</kw>
+<kw type="teardown" library="SeleniumLibrary" name="Close Browser">
+<doc>Closes the current browser.</doc>
+<status starttime="20191127 18:06:45.163" status="PASS" endtime="20191127 18:06:48.843"></status>
+</kw>
+<tags>
+<tag>SeleniumUI</tag>
+</tags>
+<status critical="yes" starttime="20191127 18:06:19.962" status="PASS" endtime="20191127 18:06:48.843"></status>
+</test>
+<test id="s1-t2" name="User Should Fill The Form 2 Successfully">
+<kw type="setup" library="Keywords" name="Initialize">
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${HEADLESS_BROWSER_ENABLED}</arg>
+<arg>Start Headless Browser</arg>
+<arg>ELSE</arg>
+<arg>Open URL in Chrome Browser</arg>
+</arguments>
+<kw library="Keywords" name="Open URL in Chrome Browser">
+<kw library="SeleniumLibrary" name="Open Browser">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg level="INFO" timestamp="20191127 18:06:48.847">Opening browser 'Chrome' to base url 'https://www.ultimateqa.com/filling-out-forms/'.</msg>
+<status starttime="20191127 18:06:48.846" status="PASS" endtime="20191127 18:07:04.631"></status>
+</kw>
+<kw library="SeleniumLibrary" name="Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<status starttime="20191127 18:07:04.631" status="PASS" endtime="20191127 18:07:09.775"></status>
+</kw>
+<kw library="SeleniumLibrary" name="Set Selenium Speed">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5 seconds</arg>
+</arguments>
+<status starttime="20191127 18:07:09.775" status="PASS" endtime="20191127 18:07:09.775"></status>
+</kw>
+<kw library="SeleniumLibrary" name="Title Should Be">
+<doc>Verifies that current page title equals ``title``.</doc>
+<arguments>
+<arg>Filling Out Forms - Ultimate QA</arg>
+</arguments>
+<msg level="INFO" timestamp="20191127 18:07:10.283">Page title is 'Filling Out Forms - Ultimate QA'.</msg>
+<status starttime="20191127 18:07:09.775" status="PASS" endtime="20191127 18:07:10.283"></status>
+</kw>
+<status starttime="20191127 18:06:48.846" status="PASS" endtime="20191127 18:07:10.283"></status>
+</kw>
+<status starttime="20191127 18:06:48.846" status="PASS" endtime="20191127 18:07:10.283"></status>
+</kw>
+<status starttime="20191127 18:06:48.845" status="PASS" endtime="20191127 18:07:10.283"></status>
+</kw>
+<kw library="Keywords" name="GIVEN User fills form 2">
+<kw library="Keywords" name="Input User Name on Form">
+<arguments>
+<arg>${NAME_FIELD2}</arg>
+<arg>And some name for the right form</arg>
+</arguments>
+<kw library="SeleniumLibrary" name="Input Text">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${NAME_FIELD}</arg>
+<arg>${NAME}</arg>
+</arguments>
+<msg level="INFO" timestamp="20191127 18:07:10.285">Typing text 'And some name for the right form' into text field 'css=.et_pb_contact_field_2 #et_pb_contact_name_1'.</msg>
+<status starttime="20191127 18:07:10.285" status="PASS" endtime="20191127 18:07:12.326"></status>
+</kw>
+<status starttime="20191127 18:07:10.284" status="PASS" endtime="20191127 18:07:12.326"></status>
+</kw>
+<kw library="Keywords" name="Input Message on Form">
+<arguments>
+<arg>${TEXT_FIELD2}</arg>
+<arg>Also some text for the right form</arg>
+</arguments>
+<kw library="SeleniumLibrary" name="Input Text">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${TEXT_FIELD}</arg>
+<arg>${TEXT}</arg>
+</arguments>
+<msg level="INFO" timestamp="20191127 18:07:12.327">Typing text 'Also some text for the right form' into text field 'css=.et_pb_contact_field_3 .et_pb_contact_message.input'.</msg>
+<status starttime="20191127 18:07:12.326" status="PASS" endtime="20191127 18:07:14.169"></status>
+</kw>
+<status starttime="20191127 18:07:12.326" status="PASS" endtime="20191127 18:07:14.169"></status>
+</kw>
+<kw library="Keywords" name="Pass Captcha">
+<kw library="SeleniumLibrary" name="Get Text">
+<doc>Returns the text value of element identified by ``locator``.</doc>
+<arguments>
+<arg>${CAPTCHA}</arg>
+</arguments>
+<assign>
+<var>${TEXT}</var>
+</assign>
+<msg level="INFO" timestamp="20191127 18:07:15.203">${TEXT} = 2 + 11</msg>
+<status starttime="20191127 18:07:14.169" status="PASS" endtime="20191127 18:07:15.203"></status>
+</kw>
+<kw library="BuiltIn" name="Evaluate">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${TEXT}</arg>
+</arguments>
+<assign>
+<var>${Result}</var>
+</assign>
+<msg level="INFO" timestamp="20191127 18:07:15.203">${Result} = 13</msg>
+<status starttime="20191127 18:07:15.203" status="PASS" endtime="20191127 18:07:15.203"></status>
+</kw>
+<kw library="SeleniumLibrary" name="Input Text">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAPTCHA_FIELD}</arg>
+<arg>${Result}</arg>
+</arguments>
+<msg level="INFO" timestamp="20191127 18:07:15.204">Typing text '13' into text field 'css=.input.et_pb_contact_captcha'.</msg>
+<status starttime="20191127 18:07:15.204" status="PASS" endtime="20191127 18:07:16.809"></status>
+</kw>
+<status starttime="20191127 18:07:14.169" status="PASS" endtime="20191127 18:07:16.809"></status>
+</kw>
+<kw library="SeleniumLibrary" name="Capture Page Screenshot">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg level="INFO" html="yes" timestamp="20191127 18:07:17.655">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-23.png"&gt;&lt;img src="selenium-screenshot-23.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status starttime="20191127 18:07:16.809" status="PASS" endtime="20191127 18:07:17.655"></status>
+</kw>
+<status starttime="20191127 18:07:10.284" status="PASS" endtime="20191127 18:07:17.655"></status>
+</kw>
+<kw library="Keywords" name="WHEN User submits forms 2">
+<kw library="SeleniumLibrary" name="Click Button">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${SUBMIT_BUTTON2}</arg>
+</arguments>
+<msg level="INFO" timestamp="20191127 18:07:17.660">Clicking button 'css=#et_pb_contact_form_1 .et_pb_contact_submit.et_pb_button'.</msg>
+<status starttime="20191127 18:07:17.659" status="PASS" endtime="20191127 18:07:20.287"></status>
+</kw>
+<status starttime="20191127 18:07:17.659" status="PASS" endtime="20191127 18:07:20.287"></status>
+</kw>
+<kw library="Keywords" name="THEN Form 2 was submitted successfully">
+<kw library="SeleniumLibrary" name="Wait Until Page Contains">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>Success</arg>
+</arguments>
+<status starttime="20191127 18:07:20.288" status="PASS" endtime="20191127 18:07:23.701"></status>
+</kw>
+<kw library="SeleniumLibrary" name="Capture Page Screenshot">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg level="INFO" html="yes" timestamp="20191127 18:07:24.559">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-24.png"&gt;&lt;img src="selenium-screenshot-24.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status starttime="20191127 18:07:23.701" status="PASS" endtime="20191127 18:07:24.560"></status>
+</kw>
+<kw name="= Make Some Calculation">
+<arguments>
+<arg>10</arg>
+<arg>15</arg>
+</arguments>
+<assign>
+<var>${RESULT}</var>
+</assign>
+<msg level="FAIL" timestamp="20191127 18:07:24.564">No keyword with name '= Make Some Calculation' found.</msg>
+<status starttime="20191127 18:07:24.564" status="FAIL" endtime="20191127 18:07:24.564"></status>
+</kw>
+<status starttime="20191127 18:07:20.287" status="FAIL" endtime="20191127 18:07:24.565"></status>
+</kw>
+<kw type="teardown" library="SeleniumLibrary" name="Close Browser">
+<doc>Closes the current browser.</doc>
+<status starttime="20191127 18:07:24.566" status="PASS" endtime="20191127 18:07:27.207"></status>
+</kw>
+<tags>
+<tag>SeleniumUI</tag>
+</tags>
+<status critical="yes" starttime="20191127 18:06:48.844" status="FAIL" endtime="20191127 18:07:27.207">No keyword with name '= Make Some Calculation' found.</status>
+</test>
+<doc>Example test suite using the SeleniumLibrary of the
+Robotframework.
+This test suite consists of two test cases filling out two
+different form and solving a capture.</doc>
+<status starttime="20191127 18:06:19.652" status="FAIL" endtime="20191127 18:07:27.209"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="1">Critical Tests</stat>
+<stat fail="1" pass="1">All Tests</stat>
+</total>
+<tag>
+<stat fail="1" pass="1">SeleniumUI</stat>
+</tag>
+<suite>
+<stat fail="1" pass="1" name="Selenium-Ui-Test" id="s1">Selenium-Ui-Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

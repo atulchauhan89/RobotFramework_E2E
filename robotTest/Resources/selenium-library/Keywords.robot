@@ -1,11 +1,11 @@
 *** Settings ***
 Library  SeleniumLibrary
 Resource  Variables.robot
-Library   ../../custom_keywords.py
+#Library   ../../custom_keywords.py
 
 *** Keywords ***
-Init
-    Run keyword if  ${HEADLESS_BROWSER_ENABLED}
+Initialize
+       Run keyword if  ${HEADLESS_BROWSER_ENABLED}
     ...  Start Headless Browser
     ...  ELSE
     ...  Open URL in Chrome Browser
@@ -19,7 +19,6 @@ Start Headless Browser
     ${chrome_options}=    Set Chrome Options
     Create Webdriver    Chrome    chrome_options=${chrome_options}
     Go To    ${LOGIN URL}
-
 Set Chrome Options
     [Documentation]    Set Chrome options for headless mode
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
@@ -57,7 +56,7 @@ User submits forms 2
 Form 2 was submitted successfully
     Wait Until Page Contains    Success
     Capture Page Screenshot
-    ${RESULT}=  Make Some Calculation   10  15
+    ${RESULT}  = Make Some Calculation   10  15
     Log To Console  ${RESULT}
     ${RESULT}=  Give Me Some Output
     Log To Console  ${RESULT}

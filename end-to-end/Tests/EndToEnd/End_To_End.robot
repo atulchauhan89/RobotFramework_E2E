@@ -1,9 +1,9 @@
 *** Settings ***
 Documentation  This is my end to end suite
-Resource  /Users/sdodia/PycharmProjects/Automation/end-to-end/Resources/BackOffice/BackOfficeApp.robot
-Resource  /Users/sdodia/PycharmProjects/Automation/end-to-end/Resources/FrontOffice/FrontOfficeApp.robot
-Resource  /Users/sdodia/PycharmProjects/Automation/end-to-end/Resources/Common/CommonWeb.robot
-Resource  /Users/sdodia/PycharmProjects/Automation/end-to-end/Data/InputData.robot
+Resource  D:/DemoProject/RobotFramework_E2E/end-to-end/Resources/BackOffice/BackOfficeApp.robot
+Resource  D:/DemoProject/RobotFramework_E2E/end-to-end/Resources/FrontOffice/FrontOfficeApp.robot
+Resource  D:/DemoProject/RobotFramework_E2E/end-to-end/Resources/Common/CommonWeb.robot
+Resource  D:/DemoProject/RobotFramework_E2E/end-to-end/Data/InputData.robot
 Test Setup  Begin Web Test
 Test Teardown  End Web Test
 
