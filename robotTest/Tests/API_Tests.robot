@@ -2,9 +2,9 @@
 Documentation  These are some API tests
 Resource  D:/DemoProject/RobotFramework_E2E/robotTest/Resources/API/Github.robot
 # Many ways to run:
-# pybot -d results/api tests/API_Tests.robot
-# pybot -d results/api -i API tests
-# pybot -d results/api tests
+# robot -d results/api tests/API_Tests.robot
+# robot -d results/api -i API tests
+# robot -d results/api tests
 
 *** Variables ***
 

@@ -1,5 +1,5 @@
 *** Settings ***
-Resource  /Users/sdodia/PycharmProjects/Automation/data-driven-ext-csv/Resources/PO/SignIn.robot
+Resource  D:/DemoProject/RobotFramework_E2E/data-driven-ext-csv/Resources/PO/SignIn.robot
 
 *** Keywords ***
 Login with many invalid credentials

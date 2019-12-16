@@ -1,9 +1,9 @@
 *** Settings ***
 Documentation  Demonstrate a need for data-driven testing
-Resource  /Users/sdodia/PycharmProjects/Automation/data-driven-ext-csv/Data/InputData.robot
-Resource  /Users/sdodia/PycharmProjects/Automation/data-driven-ext-csv/Resources/Common.robot
-Resource  /Users/sdodia/PycharmProjects/Automation/data-driven-ext-csv/Resources/CarsApp.robot
-Resource  /Users/sdodia/PycharmProjects/Automation/data-driven-ext-csv/Resources/DataManager.robot
+Resource  D:/DemoProject/RobotFramework_E2E/data-driven-ext-csv/Data/InputData.robot
+Resource  D:/DemoProject/RobotFramework_E2E/data-driven-ext-csv/Resources/Common.robot
+Resource  D:/DemoProject/RobotFramework_E2E/data-driven-ext-csv/Resources/CarsApp.robot
+Resource  D:/DemoProject/RobotFramework_E2E/data-driven-ext-csv/Resources/DataManager.robot
 Test Setup  Common.Begin Web Test
 Test Teardown  Common.End Web Test
 

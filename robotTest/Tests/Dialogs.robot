@@ -20,11 +20,4 @@ Go To Item Page and few checks
     Set Global Variable  ${BROWSER}  ${new_browser}
     Walmart.Go to Item Page and select varient
 
-User must sign in to check out
-    [Documentation]  This is some basic info about the test
-    [Tags]  Web
-    Walmart.Go to Item Page and select varient
-    Execute Manual Step  Do something manually!  It failed!
-    Walmart.Add to Cart and Go to Checkout
-    Pause Execution
-    Walmart.Enter Username & password
+

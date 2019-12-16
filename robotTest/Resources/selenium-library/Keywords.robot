@@ -41,7 +41,7 @@ User submits forms 1
     Click Button  ${SUBMIT_BUTTON}
 
 Form 1 was submitted successfully
-    Wait Until Page Contains    Form filled out successfully
+    Wait Until Page Contains    Form filled out successfully  timeout=5.0  error=Not able to find the element
     Capture Page Screenshot
 
 User fills form 2
@@ -54,7 +54,7 @@ User submits forms 2
     Click Button  ${SUBMIT_BUTTON2}
 
 Form 2 was submitted successfully
-    Wait Until Page Contains    Success
+    Wait Until Page Contains    Success   timeout=10.0  error=Not able to find the element
     Capture Page Screenshot
     ${RESULT}  = Make Some Calculation   10  15
     Log To Console  ${RESULT}
